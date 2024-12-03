@@ -5,25 +5,27 @@ export default function AddMovieForm({ onAddMovie }) {
  
   const handleSubmit = (e) => { 
     e.preventDefault(); 
-    if (title.trim() === "") { 
-      return; // Prevent adding empty or whitespace-only movie titles 
-    } 
-    onAddMovie(title); 
-    setTitle(""); // Reset the input field after adding a movie 
+     
+    if (!title.trim()) return; 
+ 
+    const newMovie = { 
+      id: Date.now(), 
+      name: title, 
+      completed: false, 
+    }; 
+ 
+    onAddMovie(newMovie); 
+    setTitle(""); 
   }; 
  
-  return ( // Ensure this is inside the function body 
+  return ( 
     <form onSubmit={handleSubmit}> 
-      <div> 
-        <label htmlFor="title">Movie Title</label> 
-        <input 
-          type="text" 
-          id="title" 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
-          placeholder="Enter movie title" 
-        /> 
-      </div> 
+      <input 
+        type="text" 
+        placeholder="Movie Title" 
+        value={title} 
+        onChange={(e) => setTitle(e.target.value)} 
+      /> 
       <button type="submit">Add Movie</button> 
     </form> 
   ); 
