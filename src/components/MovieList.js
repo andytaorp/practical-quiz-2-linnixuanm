@@ -1,17 +1,18 @@
 import React from "react";
 import Movie from "./Movie";
 
-export default function MovieList({ movies, onToggleWatched, onDeleteMovie }) {
+export default function MovieList({ movies, handleToggleWatched, handleDeleteMovie }) {
   return (
     <ul>
       {movies.map((movie) => (
         <Movie
           key={movie.id}
           movie={movie}
-          onToggleWatched={onToggleWatched}
-          onDeleteMovie={onDeleteMovie}
+          handleToggleWatched={handleToggleWatched}
+          handleDeleteMovie={handleDeleteMovie}
         />
       ))}
     </ul>
   );
 }
+  
